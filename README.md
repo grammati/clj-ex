@@ -12,15 +12,15 @@ This project aims to be the absolute simplest possible solution to this problem.
 
 ```clojure
 (ns my.ns
-  (import '(clj_ex BasicException)))
+  (:import (clj_ex BasicException)))
 
 (try
   (throw (BasicException. {:anything ["whatever" "you" "want"]
-                           :message "oops, it's borked!"})
-    (catch BasicException e
-      (println e)
-      (println (.data e))
-      )))
+                           :message "oops, it's borked!"}))
+  (catch BasicException e
+    (println e)          ;; #<BasicException clj_ex.BasicException: oops, it's borked!>
+    (println (.data e))  ;; {:anything [whatever you want], :message oops, it's borked!}
+    ))
 
 ```
 
